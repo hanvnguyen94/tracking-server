@@ -24,7 +24,9 @@ const removeBlanks = require('./../../lib/remove_blank_fields')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
-const requireToken = passport.authenticate('bearer', { session: false })
+const requireToken = passport.authenticate('bearer', {
+  session: false
+})
 
 // instantiate a router (mini app that only handles routes)
 
@@ -43,7 +45,9 @@ router.get('/subscriptions', requireToken, (req, res, next) => {
       return subscriptions.map(subscription => subscription.toObject())
     })
     // respond with status 200 and JSON of the subscriptions
-    .then(subscriptions => res.status(200).json({ subscriptions: subscriptions }))
+    .then(subscriptions => res.status(200).json({
+      subscriptions: subscriptions
+    }))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
@@ -60,7 +64,9 @@ router.get('/subscriptions/:id', requireToken, (req, res, next) => {
   })
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "subscription" JSON
-    .then(subscription => res.status(200).json({ subscription: subscription.toObject() }))
+    .then(subscription => res.status(200).json({
+      subscription: subscription.toObject()
+    }))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
@@ -77,7 +83,9 @@ router.post('/subscriptions', requireToken, (req, res, next) => {
   Subscription.create(subscriptionData)
     // respond to succesful `create` with status 201 and JSON of new "subscription"
     .then(subscription => {
-      res.status(201).json({ subscription: subscription.toObject() })
+      res.status(201).json({
+        subscription: subscription.toObject()
+      })
     })
     .then(subscription => console.log(subscription))
     // if an error occurs, pass it off to our error handler

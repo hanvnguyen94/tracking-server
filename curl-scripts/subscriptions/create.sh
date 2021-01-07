@@ -1,6 +1,6 @@
 #!/bin/bash
 
-API="http://localhost:4741"
+API="https://morning-ridge-50036.herokuapp.com"
 URL_PATH="/subscriptions"
 
 curl "${API}${URL_PATH}" \
