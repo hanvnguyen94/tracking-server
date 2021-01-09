@@ -10,8 +10,7 @@ curl "${API}${URL_PATH}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "subscription": {
-      "name": "'"${NAME}"'",
-      "description": "'"${DESCRIPTION}"'",
+      "url": "'"${URL}"'",
       "start": "'"${START}"'",
       "end": "'"${END}"'",
       "owner": "'"${OWNER}"'"

@@ -36,8 +36,8 @@ router.get('/subscriptions', requireToken, (req, res, next) => {
   const userId = req.user._id
 
   Subscription.find({
-    owner: userId
-  })
+      owner: userId
+    })
     .then(subscriptions => {
       // `subscriptions` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
@@ -59,9 +59,9 @@ router.get('/subscriptions/:id', requireToken, (req, res, next) => {
 
   // req.params.id will be set based on the `:id` in the route
   Subscription.findOne({
-    _id: id,
-    owner: req.user._id
-  })
+      _id: id,
+      owner: req.user._id
+    })
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "subscription" JSON
     .then(subscription => res.status(200).json({
@@ -104,9 +104,9 @@ router.patch('/subscriptions/:id', requireToken, removeBlanks, (req, res, next) 
   delete req.body.subscription.owner
 
   Subscription.findOne({
-    _id: id,
-    owner: req.user._id
-  })
+      _id: id,
+      owner: req.user._id
+    })
     .then(handle404)
     .then(subscription => {
       // pass the `req` object and the Mongoose record to `requireOwnership`

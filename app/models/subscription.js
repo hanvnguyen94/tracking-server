@@ -1,10 +1,14 @@
 const mongoose = require('mongoose')
 const subscriptionSchema = new mongoose.Schema({
-  name: {
+  url: {
     type: String,
     required: true
   },
-  description: {
+  start: {
+    type: String,
+    required: true
+  },
+  end: {
     type: String,
     required: true
   },
